@@ -1,8 +1,5 @@
-import { Header } from "@/components/features/Header";
-import { HeroSearch } from "@/components/features/HeroSearch";
-import { TagList } from "@/components/features/TagList";
+import { Header, HeroSearch, TagList } from "@/components/features";
 
-// Static data moved outside component to prevent recreation on each render
 const TRENDING_TAGS = [
   "NFT",
   "Metaverse",
