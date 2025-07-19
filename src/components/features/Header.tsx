@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
-import { Input } from "@/components/ui/input";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Input, Avatar, AvatarFallback, AvatarImage } from "@/components/ui/components";
 import { Search } from "lucide-react";
 
 export function Header() {
