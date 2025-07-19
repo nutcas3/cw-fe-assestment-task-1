@@ -1,10 +1,12 @@
+import { useCallback } from "react";
 import { SearchInput } from "./SearchInput";
 
 export function HeroSearch() {
-  const onSearch = (search: string) => {
+  // Memoize the callback to prevent unnecessary re-renders
+  const onSearch = useCallback((search: string) => {
     console.log(search);
     // implementing the search logic is not required for this task
-  };
+  }, []);
 
   return (
     <section className="relative w-full max-w-7xl mx-auto overflow-hidden mt-4 md:mt-8">

@@ -14,13 +14,18 @@ const TRENDING_TAGS = [
 
 export function Home() {
 
+  const handleTagClick = (tag: string) => {
+    console.log(`Tag clicked: ${tag}`);
+    // Here you would typically implement search by tag or navigation
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-black to-gray-900">
       <Header />
       <main className="pb-12">
         <HeroSearch />
-        <TagList title="Trending" tags={TRENDING_TAGS} />
-        <TagList title="For you" tags={TRENDING_TAGS} />
+        <TagList title="Trending" tags={TRENDING_TAGS} onTagClick={handleTagClick} />
+        <TagList title="For you" tags={TRENDING_TAGS} onTagClick={handleTagClick} />
       </main>
     </div>
   );
