@@ -46,7 +46,7 @@ export function SearchInput({ initialValue, onSearch }: SearchInputProps) {
       />
       <Button 
         onClick={handleSearch}
-        className="bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-8 py-1 md:py-2 text-sm md:text-base rounded-full transition-colors"
+        className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-8 py-1 md:py-2 text-sm md:text-base rounded-full transition-colors"
       >
         Search
       </Button>
