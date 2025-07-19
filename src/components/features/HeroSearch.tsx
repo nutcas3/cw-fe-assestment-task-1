@@ -1,11 +1,24 @@
-import { useCallback } from "react";
+import { useEffect, useRef } from "react";
+import type { RefObject } from "react";
 import { SearchInput } from "./SearchInput";
 
-export function HeroSearch() {
-  const onSearch = useCallback((search: string) => {
-    console.log(search);
-    // implementing the search logic is not required for this task
-  }, []);
+
+interface HeroSearchProps {
+  initialValue: string;
+  onSearch: (search: string) => void;
+  searchTrigger: number;
+}
+
+export function HeroSearch({ initialValue, onSearch, searchTrigger }: HeroSearchProps) {
+  // This effect will trigger search in SearchInput when searchTrigger changes
+  const inputRef = useRef<HTMLInputElement>(null) as RefObject<HTMLInputElement>;
+
+  useEffect(() => {
+    if (initialValue && inputRef.current) {
+      // Optionally focus the input
+      inputRef.current.focus();
+    }
+  }, [initialValue, searchTrigger]);
 
   return (
     <section 
@@ -27,7 +40,12 @@ export function HeroSearch() {
             Search for words, phrases and meanings
           </h1>
           <div className="w-full max-w-[90%] md:max-w-2xl">
-            <SearchInput initialValue="" onSearch={onSearch} />
+            <SearchInput 
+              initialValue={initialValue}
+              onSearch={onSearch}
+              searchTrigger={searchTrigger}
+              inputRef={inputRef}
+            />
           </div>
         </div>
       </div>

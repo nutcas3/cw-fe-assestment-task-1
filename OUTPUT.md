@@ -32,6 +32,10 @@
    - Fix: Separated feature components from UI components
    - Fix: directory for reusable custom hooks added debounce
    - Fix: Improved component reusability
+   - Fix: Created barrel exports for feature components in `src/components/features/index.ts`
+   - Fix: Created barrel exports for UI components in `src/components/ui/components.ts`
+   - Fix: Updated imports across the application for cleaner code
+   - Fix: Fixed TypeScript type-only imports for `RefObject` and `VariantProps`
 
 ## UI Components
 
@@ -71,6 +75,14 @@
    - Fix: Implemented rounded-full design
    - Fix: Added proper padding and hover transitions
 
+2. Interactive Tag Search
+   - Issue: Tags were static with no functionality
+   - Fix: Implemented tag click functionality that triggers search
+   - Fix: Added state management in Home component to control search value
+   - Fix: Enhanced SearchInput to be optionally controlled from parent components
+   - Fix: Added focus management for better user experience
+   - Fix: Implemented proper prop drilling from Home → HeroSearch → SearchInput
+
 ## Technical Improvements
 
 1. SearchInput Component Optimization
@@ -83,6 +95,9 @@
    - Fix: Implemented debouncing for search input (300ms) to improve performance
    - Fix: Created reusable useDebounce hook in dedicated hooks directory
    - Fix: Improved mobile responsiveness with adaptive sizing and spacing
+   - Fix: Made SearchInput optionally controlled for external state management
+   - Fix: Added proper ESLint dependency arrays in useEffect hooks
+   - Fix: Implemented immediate search triggering for tag clicks
 
 2. Static Data Management
    - Issue: Tags data unnecessarily stored in component state

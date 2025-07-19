@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import type { RefObject } from "react";
 import { Search } from "lucide-react";
 import { Button, Label, Input } from "@/components/ui/components";
 import { useDebounce } from "@/hooks";
@@ -6,18 +7,33 @@ import { useDebounce } from "@/hooks";
 interface SearchInputProps {
   initialValue: string;
   onSearch: (search: string) => void;
+  value?: string;
+  onValueChange?: (v: string) => void;
+  searchTrigger?: number;
+  inputRef?: RefObject<HTMLInputElement>;
 }
 
-export function SearchInput({ initialValue, onSearch }: SearchInputProps) {
-  const [inputValue, setInputValue] = useState(initialValue);
+export function SearchInput({ initialValue, onSearch, value, onValueChange, searchTrigger, inputRef }: SearchInputProps) {
+  const isControlled = typeof value === "string" && typeof onValueChange === "function";
+  const [internalValue, setInternalValue] = useState(initialValue);
+  const inputValue = isControlled ? value! : internalValue;
+  const setInputValue = isControlled ? onValueChange! : setInternalValue;
 
   const debouncedInputValue = useDebounce(inputValue, 300);
 
+  // Trigger search when debounced value changes
   useEffect(() => {
     if (debouncedInputValue.trim()) {
       onSearch(debouncedInputValue);
     }
   }, [debouncedInputValue, onSearch]);
+
+  // When searchTrigger changes, trigger search with current value
+  useEffect(() => {
+    if (typeof searchTrigger === "number") {
+      onSearch(inputValue);
+    }
+  }, [searchTrigger, inputValue, onSearch]);
 
   const handleSearch = useCallback(() => {
     if (inputValue.trim()) {
@@ -38,6 +54,7 @@ export function SearchInput({ initialValue, onSearch }: SearchInputProps) {
       <Search className="text-gray-400 w-4 md:w-5 h-4 md:h-5 flex-shrink-0" />
       <Input
         id="search-input"
+        ref={inputRef}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         onKeyDown={handleKeyDown}
