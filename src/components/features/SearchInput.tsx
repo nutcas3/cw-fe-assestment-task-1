@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Search } from "lucide-react";
+import { useDebounce } from "@/hooks";
 
 interface SearchInputProps {
   initialValue: string;
@@ -9,19 +10,22 @@ interface SearchInputProps {
 }
 
 export function SearchInput({ initialValue, onSearch }: SearchInputProps) {
-  // Use initialValue as the initial state, but don't re-sync on prop changes
-  // This is the recommended pattern for form inputs that have both controlled and uncontrolled behavior
   const [inputValue, setInputValue] = useState(initialValue);
   
-  // Create a debounced version of the search function
-  const handleSearch = () => {
-    // Only search if we have a value
+  const debouncedInputValue = useDebounce(inputValue, 300);
+  
+  useEffect(() => {
+    if (debouncedInputValue.trim()) {
+      onSearch(debouncedInputValue);
+    }
+  }, [debouncedInputValue, onSearch]);
+  
+  const handleSearch = useCallback(() => {
     if (inputValue.trim()) {
       onSearch(inputValue);
     }
-  };
+  }, [inputValue, onSearch]);
 
-  // Handle keyboard events (Enter key)
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();

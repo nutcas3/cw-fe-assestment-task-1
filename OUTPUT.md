@@ -30,6 +30,7 @@
    - Issue: Mixed responsibilities in App.tsx
    - Fix: Created dedicated pages directory for page components
    - Fix: Separated feature components from UI components
+   - Fix: Created hooks directory for reusable custom hooks
    - Fix: Improved component reusability
 
 ## UI Components
@@ -79,6 +80,8 @@
    - Fix: Implemented explicit search button functionality
    - Fix: Added input validation to prevent empty searches
    - Fix: Added keyboard support (Enter key) for better accessibility
+   - Fix: Implemented debouncing for search input (300ms) to improve performance
+   - Fix: Created reusable useDebounce hook in dedicated hooks directory
 
 2. Static Data Management
    - Issue: Tags data unnecessarily stored in component state
