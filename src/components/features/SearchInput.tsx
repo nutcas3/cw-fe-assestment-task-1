@@ -64,7 +64,7 @@ export function SearchInput({ initialValue, onSearch, value, onValueChange, sear
       />
       <Button
         onClick={handleSearch}
-        className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-1 text-sm rounded-md transition-colors"
+        className="bg-[#1A80E5] hover:bg-[#1A80E5]/90 text-white font-bold px-6 py-1 text-sm rounded-md transition-colors"
       >
         Search
       </Button>

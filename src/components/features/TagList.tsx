@@ -41,7 +41,7 @@ export function TagList({ title, tags, onTagClick = () => {} }: TagListProps) {
             tabIndex={0}
             role="listitem"
             aria-label={`Select tag ${tag}`}
-            className="bg-zinc-700 text-white/80 font-medium text-sm py-1 px-4 rounded-md transition-colors cursor-pointer"
+            className="bg-[#293038] text-[#9EABB8] font-medium text-sm px-4 py-1 rounded-md transition-colors cursor-pointer"
           >
             {tag}
           </Badge>

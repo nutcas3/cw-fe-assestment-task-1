@@ -29,7 +29,7 @@ export function Home() {
   }, [handleSearch]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-black to-gray-900">
+    <div className="min-h-screen bg-[#121417]">
       <Header />
       <main className="pb-8 md:pb-12 pt-1 md:pt-0">
         {/* Pass value and onSearch to HeroSearch */}
