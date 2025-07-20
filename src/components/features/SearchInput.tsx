@@ -49,9 +49,9 @@ export function SearchInput({ initialValue, onSearch, value, onValueChange, sear
   };
 
   return (
-    <div className="flex items-center gap-2 md:gap-4 bg-black/80 backdrop-blur-sm px-4 md:px-6 py-2 md:py-3 rounded-full w-full max-w-2xl shadow-xl border border-gray-800/50">
+    <div className="flex items-center gap-2 bg-zinc-900/80 backdrop-blur-sm px-4 py-2 rounded-md w-full max-w-2xl shadow-lg border border-zinc-700/50">
       <Label htmlFor="search-input" className="sr-only">Search</Label>
-      <Search className="text-gray-400 w-4 md:w-5 h-4 md:h-5 flex-shrink-0" />
+      <Search className="text-gray-400 w-4 h-4 flex-shrink-0" />
       <Input
         id="search-input"
         ref={inputRef}
@@ -60,11 +60,11 @@ export function SearchInput({ initialValue, onSearch, value, onValueChange, sear
         onKeyDown={handleKeyDown}
         type="text"
         placeholder="Type to search..."
-        className="flex-1 bg-transparent border-0 text-white placeholder:text-gray-400 focus-visible:ring-0 text-base md:text-lg px-0"
+        className="flex-1 bg-transparent border-0 text-white font-bold placeholder:text-gray-400 focus-visible:ring-0 text-sm px-0 rounded-md"
       />
       <Button
         onClick={handleSearch}
-        className="hidden md:block bg-blue-600 hover:bg-blue-700 text-white px-4 md:px-8 py-1 md:py-2 text-sm md:text-base rounded-full transition-colors"
+        className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-1 text-sm rounded-md transition-colors"
       >
         Search
       </Button>
